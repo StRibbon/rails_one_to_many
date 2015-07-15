@@ -1,16 +1,31 @@
 <h1>Authors Index</h1>
 
 <% @authors.each do |author| %>
+<h3>
+	<%= author.first_name %>
+	<%= author.last_name %>
+</h3>
+	<%= link_to "Add book", new_author_book_path(author)%>
 	
 	<%= link_to "Edit author", edit_author_path(author)%>
 
-	<%= author.first_name %>
-	<%= author.last_name %>
-
-<br>	
-	Books:
-	  <% author.books.each do |book| %>
-	  <%= book.title %>
-	  <% end %>
+	<%= link_to 'Delete author', author_path(author), class:'btn btn-sm btn-warning',  method: :delete, data: { confirm: 'Are you sure?' } %>
 <br>
+	
+
+<br><br>
+
+
+	<h4>Books:</h4>
+
+	  <% author.books.each do |book| %>
+	  <%= book.title %> <br><br>
+
+<%= link_to "Edit book", edit_book_path(author) %>
+<%= link_to "Delete book", book_path(book), class:'btn btn-sm btn-warning', method: :delete, data: {confirm: 'Are you sure?'} %>	
+
+
+	  <img src="<%= book.cover %>">
+	  <% end %>
+<br><br>
 	<% end %>

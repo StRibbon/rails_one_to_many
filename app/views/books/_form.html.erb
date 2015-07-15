@@ -1,0 +1,9 @@
+<%= form_for [@author, @book], class:'form-group' do |f| %>
+    <%= f.label "Title" %>
+    <%= f.text_field :title, class:'form-control', autofocus:true %><br />
+    <%= f.label "Description" %>
+    <%= f.text_field :description, class:'form-control' %><br />
+    <%= f.label "Cover URL" %>
+    <%= f.text_field :cover, class:'form-control' %><br />
+    <%= f.submit class:'btn btn-success' %>
+<% end %>

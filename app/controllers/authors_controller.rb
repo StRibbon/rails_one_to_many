@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
 
-  before_action :author_find, only: [:show, :edit, :update, :destroy]
-  
+  before_action :find_author, only: [:show, :edit, :update, :destroy]
+  # after_action :author_redirect, only: [:create, :update, :destroy]
   def index
 	@authors = Author.all
 	render :index
@@ -26,16 +26,24 @@ class AuthorsController < ApplicationController
   end
 
   def update
+  	@author.update(author_params)
+  	@author.save
+  	redirect_to authors_path
   end
 
   def destroy
+  	@author.destroy
+  	redirect_to authors_path
   end
 
   private
   	def author_params
       params.require(:author).permit(:first_name, :last_name)
     end
-    def author_find
+    def find_author
       @author = Author.find(params[:id])
     end
+    # def author_redirect
+    # 	redirect_to authors_path
+    # end
 end
