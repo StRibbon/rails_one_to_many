@@ -1,0 +1,7 @@
+<%= form_for @author, class:'form-group' do |f| %>
+    <%= f.label "First name" %>
+    <%= f.text_field :first_name, class:'form-control', autofocus:true %><br />
+    <%= f.label "Last name" %>
+    <%= f.text_field :last_name, class:'form-control' %><br />
+    <%= f.submit class:'btn btn-success' %>
+<% end %>
